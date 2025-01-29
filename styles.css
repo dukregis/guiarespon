@@ -1,0 +1,108 @@
+/* Reset básico */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evitar el desbordamiento horizontal */
+}
+
+/* Menú lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Menú inicialmente fuera de la pantalla */
+    height: 100%;
+    width: 200px;
+    background-color: #333;
+    transition: left 0.3s ease; /* Animación para abrir el menú */
+    z-index: 1000; /* Asegura que el menú esté por encima */
+    
+}
+
+.side-menu .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.side-menu .menu li {
+    padding: 15px;
+    text-align: center;
+
+}
+
+.side-menu .menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* Contenido principal */
+.main-content {
+    transition: margin-left 0.3s ease; /* Animación para mover el contenido */
+    padding: 20px;
+    
+}
+
+.main-content header {
+    background-color: red;
+    padding: 15px;
+    color: white;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    height: 60px; /* Ajusta la altura según el diseño */
+    position: relative; /* Necesario para el ícono */
+    
+}
+
+.main-content header .menu-toggle {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: 20px; /* Coloca el ícono a la izquierda */
+    
+}
+
+/* Estilos para escritorios y móviles */
+@media (min-width: 769px) {
+    .side-menu {
+        left: -250px; /* El menú está oculto por defecto en escritorios */
+    }
+
+    .main-content {
+        margin-left: 0; /* El contenido no se desplaza por defecto */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el ícono en escritorios */
+    }
+
+    /* Cuando el menú tiene la clase "active" */
+    .side-menu.active {
+        left: 0; /* Mueve el menú hacia la vista */
+    }
+
+    /* Cuando el menú está abierto, el contenido se desplaza a la derecha */
+    .main-content.active {
+        margin-left: 250px; /* Desplaza el contenido hacia la derecha */
+    }
+}
+
+/* Estilos para móviles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Mostrar el ícono del menú en móviles */
+    }
+
+    /* Mostrar el menú cuando tiene la clase "active" */
+    .side-menu.active {
+        left: 0; /* El menú se mueve a la vista */
+    }
+
+    /* Cuando el menú está abierto, el contenido se desplaza a la derecha */
+    .main-content.active {
+        margin-left: 250px; /* Desplaza el contenido hacia la derecha */
+    }
+}
